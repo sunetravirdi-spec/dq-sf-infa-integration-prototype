@@ -184,19 +184,6 @@ function CatalogList({ onObjectClick }) {
     setShowAssistant(!showAssistant);
   };
 
-  const getDQBadgeClass = (score) => {
-    if (score >= 90) return 'excellent';
-    if (score >= 70) return 'good';
-    if (score >= 50) return 'needs-attention';
-    return 'critical';
-  };
-
-  const getDQLabel = (score) => {
-    if (score >= 90) return 'Excellent';
-    if (score >= 70) return 'Good';
-    if (score >= 50) return 'Needs Attention';
-    return 'Critical';
-  };
 
   const sources = ['All', ...new Set(mockCatalogData.map(obj => obj.source))];
 

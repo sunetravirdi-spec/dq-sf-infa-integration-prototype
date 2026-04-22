@@ -47,16 +47,6 @@ function DQAssistant({ onClose, recommendations, catalogData }) {
     setInputValue('');
     setIsProcessing(true);
 
-    // Check for activation phrases
-    const lowerInput = userInput.toLowerCase();
-    const isQuestion = lowerInput.includes('?') ||
-                       lowerInput.includes('what') ||
-                       lowerInput.includes('which') ||
-                       lowerInput.includes('how') ||
-                       lowerInput.includes('when') ||
-                       lowerInput.includes('show') ||
-                       lowerInput.includes('tell');
-
     setTimeout(() => {
       const response = generateResponse(userInput);
       const assistantMessage = {
