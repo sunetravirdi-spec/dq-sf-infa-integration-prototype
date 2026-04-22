@@ -1,0 +1,237 @@
+/* Salesforce Design System Colors */
+:root {
+  --sf-blue: #0176D3;
+  --sf-blue-hover: #014486;
+  --sf-purple: #8B6FBC;
+  --sf-border: #DDDBDA;
+  --sf-gray-bg: #F3F2F2;
+  --sf-text: #080707;
+  --sf-text-light: #706E6B;
+  --sf-white: #FFFFFF;
+  --sf-success: #2E844A;
+  --sf-warning: #FFB75D;
+  --sf-error: #EA001E;
+}
+
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #F3F2F2;
+}
+
+/* Header - Salesforce style */
+.app-header {
+  background: var(--sf-white);
+  border-bottom: 1px solid var(--sf-border);
+  padding: 0.75rem 1.5rem;
+  box-shadow: none;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.app-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1rem;
+  color: var(--sf-text);
+  font-weight: 600;
+}
+
+.app-header h1 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--sf-text);
+}
+
+.header-nav {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.nav-tab {
+  padding: 0.75rem 1.5rem;
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  color: var(--sf-text-light);
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.nav-tab.active {
+  color: var(--sf-blue);
+  border-bottom-color: var(--sf-blue);
+}
+
+.nav-tab:hover {
+  color: var(--sf-blue);
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.user-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--sf-purple);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+.app-main {
+  flex: 1;
+  display: flex;
+  max-width: 1600px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Sidebar - Salesforce style */
+.sidebar {
+  width: 240px;
+  background: var(--sf-white);
+  border-right: 1px solid var(--sf-border);
+  padding: 1.5rem 0;
+}
+
+.sidebar-title {
+  padding: 0 1.5rem;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--sf-text);
+  margin-bottom: 1rem;
+}
+
+.sidebar-menu {
+  list-style: none;
+}
+
+.sidebar-item {
+  padding: 0.75rem 1.5rem;
+  color: var(--sf-text);
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.sidebar-item:hover {
+  background: var(--sf-gray-bg);
+}
+
+.sidebar-item.active {
+  background: #E3F3FF;
+  color: var(--sf-blue);
+  font-weight: 600;
+  border-left: 3px solid var(--sf-blue);
+}
+
+.content-area {
+  flex: 1;
+  padding: 2rem;
+  overflow-y: auto;
+}
+
+/* DQ Score Badge - Salesforce style */
+.dq-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.dq-badge.high {
+  background: #E3F3E5;
+  color: var(--sf-success);
+}
+
+.dq-badge.low {
+  background: #FFF4E0;
+  color: #B86403;
+}
+
+.dq-badge.warning {
+  background: #FEF0E6;
+  color: #B86403;
+}
+
+/* Buttons - Salesforce style */
+.btn {
+  padding: 0.5rem 1rem;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-primary {
+  background: var(--sf-blue);
+  color: white;
+  border-color: var(--sf-blue);
+}
+
+.btn-primary:hover {
+  background: var(--sf-blue-hover);
+  border-color: var(--sf-blue-hover);
+}
+
+.btn-secondary {
+  background: white;
+  color: var(--sf-blue);
+  border-color: var(--sf-border);
+}
+
+.btn-secondary:hover {
+  background: var(--sf-gray-bg);
+}
+
+.btn-setup {
+  background: var(--sf-blue);
+  color: white;
+  padding: 0.625rem 1.25rem;
+  font-size: 0.875rem;
+}
+
+.btn-setup:hover {
+  background: var(--sf-blue-hover);
+}
+
+/* Loading */
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+  font-size: 1.25rem;
+  color: var(--sf-text-light);
+}
