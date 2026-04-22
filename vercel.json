@@ -1,0 +1,5 @@
+{
+  "buildCommand": "cd dq-ops-prototype && npm install && npm run build",
+  "outputDirectory": "dq-ops-prototype/build",
+  "installCommand": "cd dq-ops-prototype && npm install"
+}
