@@ -374,7 +374,7 @@ function CatalogList({ onObjectClick }) {
 
       {/* DQ Assistant - Floating Chat */}
       {!showAssistant && (
-        <button className="dq-assistant-fab" onClick={toggleAssistant} title="Open DQ Assistant">
+        <button className="dq-assistant-fab" onClick={toggleAssistant} title="Open Data Cloud Assistant - Powered by Claire">
           🤖
         </button>
       )}

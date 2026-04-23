@@ -22,7 +22,7 @@ function DQAssistant({ onClose, recommendations, catalogData }) {
       {
         id: 1,
         type: 'assistant',
-        content: `Hi! I'm your Data Quality Assistant. I can help you with:`
+        content: `Hi! I'm Claire, your Data Cloud Assistant. I can help you with:`
       },
       {
         id: 2,
@@ -203,8 +203,8 @@ function DQAssistant({ onClose, recommendations, catalogData }) {
         <div className="assistant-header-content">
           <div className="assistant-icon">🤖</div>
           <div>
-            <h3>Data Quality Assistant</h3>
-            <p className="assistant-subtitle">Ask me about your data quality</p>
+            <h3>Data Cloud Assistant</h3>
+            <p className="assistant-subtitle">Powered by Claire</p>
           </div>
         </div>
         <button className="close-assistant-btn" onClick={onClose}>✕</button>
