@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import './ObjectDetail.css';
-import ProfilingStats from './ProfilingStats';
 
 const mockProfilingData = {
   1: { // Lead object
@@ -181,9 +180,9 @@ function ObjectDetail({ object, onBack, onApplyRule }) {
   return (
     <div className="object-detail">
       <div className="breadcrumb">
-        <a href="#" onClick={(e) => { e.preventDefault(); onBack(); }}>Assets</a>
+        <a href="/" onClick={(e) => { e.preventDefault(); onBack(); }}>Assets</a>
         <span>›</span>
-        <a href="#" onClick={(e) => { e.preventDefault(); onBack(); }}>{object.source}</a>
+        <a href="/" onClick={(e) => { e.preventDefault(); onBack(); }}>{object.source}</a>
         <span>›</span>
         <span>{object.name}</span>
       </div>
@@ -208,7 +207,7 @@ function ObjectDetail({ object, onBack, onApplyRule }) {
           <div className="meta-item">
             <div className="meta-label">Domain</div>
             <div className="meta-value">
-              <a href="#" className="meta-link">Sales & Marketing</a>
+              <a href="/" className="meta-link">Sales & Marketing</a>
             </div>
           </div>
 
@@ -216,7 +215,7 @@ function ObjectDetail({ object, onBack, onApplyRule }) {
             <div className="meta-label">Business Object</div>
             <div className="meta-value">
               {object.businessObject && (
-                <a href="#" className="meta-link">{object.businessObject}</a>
+                <a href="/" className="meta-link">{object.businessObject}</a>
               )}
               {!object.businessObject && '—'}
             </div>
@@ -298,7 +297,7 @@ function ObjectDetail({ object, onBack, onApplyRule }) {
                         <td><span className="data-type-badge">{col.dataType}</span></td>
                         <td>
                           {col.businessTerm && (
-                            <a href="#" className="business-term-link">{col.businessTerm}</a>
+                            <a href="/" className="business-term-link">{col.businessTerm}</a>
                           )}
                           {!col.businessTerm && <span className="no-term">—</span>}
                         </td>

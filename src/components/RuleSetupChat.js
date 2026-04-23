@@ -396,10 +396,6 @@ function RuleSetupChat({ rule, onClose, onConfirmSetup }) {
     return `I want to make sure I answer your question correctly.\n\nFor **${rule.name}**, I can explain:\n• Specific DMOs and record counts\n• Example improvements\n• Which fields are checked\n• What happens when issues are found\n• Other available rules\n\nCould you rephrase or pick one from above?`;
   };
 
-  const handleConfirm = () => {
-    onConfirmSetup(rule);
-  };
-
   const handleKeyPress = (e) => {
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
