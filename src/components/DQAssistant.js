@@ -92,6 +92,13 @@ function DQAssistant({ onClose, recommendations, catalogData }) {
       }
     }
 
+    // What can I do / tasks questions
+    if (lowerQ.includes('task') || lowerQ.includes('what can') || lowerQ.includes('what are') ||
+        lowerQ.includes('what do') || lowerQ.includes('capabilities') || lowerQ.includes('can you do') ||
+        lowerQ.includes('help me') || lowerQ.includes('what can i') || lowerQ.includes('how can you')) {
+      return `**Here's what I can help you with:**\n\n1. **Set up a Data Quality rule**\n   Activate AI-recommended DQ rules on your DMOs — no rule engine knowledge needed. Say "show pending rules" to see what's ready to activate.\n\n2. **View DQ scores**\n   See quality scores across all profiled assets, broken down by dimension (Completeness, Accuracy, Consistency, Validity, Uniqueness).\n\n3. **Find assets that need attention**\n   Identify which DMOs or DLOs have low scores or missing profiling. Say "what needs attention?"\n\n4. **Prioritize rules**\n   Get a recommendation on which rules to set up first based on business impact. Say "which rules should I prioritize?"\n\n5. **Ask about a specific asset**\n   Get details on any object — DQ score, profiling status, owner, recommended rules. Say "tell me about Lead__c"\n\n6. **Check profiling status**\n   See which assets have been profiled and which haven't. Say "what's been profiled?"\n\nWhat would you like to do?`;
+    }
+
     // Pending rules questions
     if (lowerQ.includes('pending') || lowerQ.includes('recommendation') ||
         lowerQ.includes('suggest') || (lowerQ.includes('what') && lowerQ.includes('rule'))) {
