@@ -321,12 +321,23 @@ function RuleSetupChat({ rule, onClose, onConfirmSetup }) {
       lowerQ.includes('demonstration');
 
     if (isAskingForExamples) {
-      if (rule.id === 'top-1') {
-        return `**Examples:**\n\n❌ john.doe@gmailcom → ✓ Flagged (missing dot)\n❌ sarah@@company.com → ✓ Flagged (double @)\n❌ mike.smith@domain → ✓ Flagged (no extension)\n\nInvalid emails will be flagged for your team to correct.\n\n**Would you like to see:**\n• Which specific email fields are checked?\n• How to fix these issues in bulk?`;
-      } else if (rule.id === 'top-2') {
-        return `**Examples:**\n\n**Lead #1234:** Missing Email, Company → Flagged\n**Contact #5678:** Missing First Name → Flagged\n\nRecords with empty required fields will be marked incomplete.\n\n**Want to know:**\n• Which fields are considered "required"?\n• How to prevent null values going forward?`;
-      } else if (rule.id === 'top-3') {
-        return `**Examples:**\n\n"United States", "USA", "America" → **US**\n"United Kingdom", "UK" → **GB**\n"Deutschland", "Germany" → **DE**\n\nAll variations standardized to ISO codes.\n\n**Interested in:**\n• See the full list of country mappings?\n• Learn about state/province standardization too?`;
+      const ruleName = rule.name.toLowerCase();
+      if (ruleName.includes('email')) {
+        return `**Email Format — Before & After:**\n\n❌ john.doe@gmailcom → Flagged (missing dot before com)\n❌ sarah@@company.com → Flagged (double @ symbol)\n❌ mike.smith@domain → Flagged (no .com/.org extension)\n✅ jane.doe@company.com → Passes\n\nInvalid emails are flagged in the DQ dashboard for your team to review and correct.\n\nWant to know which fields are checked, or how to fix in bulk?`;
+      } else if (ruleName.includes('null') || ruleName.includes('missing') || ruleName.includes('required')) {
+        return `**Null Value Check — Before & After:**\n\n❌ Lead #1234: Email = (empty) → Flagged\n❌ Contact #5678: FirstName = (empty) → Flagged\n❌ Account #9012: BillingCountry = (empty) → Flagged\n✅ Lead #3456: All required fields filled → Passes\n\nFlagged records show in your DQ dashboard with the specific missing fields highlighted.\n\nWant to know which fields are treated as required?`;
+      } else if (ruleName.includes('country')) {
+        return `**Country Code — Before & After:**\n\n❌ "United States" → ✅ US\n❌ "USA" → ✅ US\n❌ "America" → ✅ US\n❌ "United Kingdom" → ✅ GB\n❌ "Deutschland" → ✅ DE\n❌ "France" → ✅ FR\n\nAll country name variations are standardized to 2-letter ISO codes. This makes filtering and reporting by country consistent across Lead, Contact, and Account.\n\nWant to see the full mapping list or learn about state/province standardization too?`;
+      } else if (ruleName.includes('phone')) {
+        return `**Phone Format — Before & After:**\n\n❌ 555.123.4567 → ✅ +1-555-123-4567\n❌ (555) 123-4567 → ✅ +1-555-123-4567\n❌ 5551234567 → ✅ +1-555-123-4567\n✅ +1-555-123-4567 → Already correct\n\nAll formats standardized to E.164 international format, making it easier to run campaigns and integrate with dialers.\n\nWant to know which fields are checked?`;
+      } else if (ruleName.includes('website') || ruleName.includes('url')) {
+        return `**Website URL — Before & After:**\n\n❌ www.company.com → ✅ https://www.company.com\n❌ company.com → ✅ https://www.company.com\n❌ http://company.com/ → ✅ https://www.company.com\n✅ https://www.company.com → Already correct\n\nAll URLs are normalized to https:// with consistent trailing slash rules, so links in emails and reports always work.\n\nWant to activate this rule now?`;
+      } else if (ruleName.includes('industry')) {
+        return `**Industry Classification — Before & After:**\n\n❌ "Tech" → ✅ Technology\n❌ "Finance / Banking" → ✅ Financial Services\n❌ "Pharma" → ✅ Healthcare & Life Sciences\n❌ "IT Services" → ✅ Technology\n✅ "Retail" → Already standard\n\nNon-standard values are mapped to your org's approved industry taxonomy, making segmentation and reporting accurate.\n\nWant to activate this rule?`;
+      } else if (ruleName.includes('duplicate')) {
+        return `**Duplicate Detection — Examples:**\n\nRecord A: John Smith, john@acme.com, Acme Corp\nRecord B: J. Smith, john@acme.com, Acme Corp\n→ Flagged as likely duplicate (same email)\n\nRecord C: Jane Doe, 415-555-1234, Globex Inc\nRecord D: Jane M. Doe, 415-555-1234, Globex\n→ Flagged as likely duplicate (same phone + similar name)\n\nFlagged pairs appear in the DQ dashboard for you to review and merge or dismiss.\n\nWant to activate this rule?`;
+      } else {
+        return `**${rule.name} — Before & After:**\n\nThis rule scans your **${rule.affectedObjects.join(', ')}** records and flags any values that don't meet the quality standard.\n\n✅ Records that pass appear with a green DQ indicator\n❌ Records that fail are listed in the DQ dashboard with the specific issue highlighted\n\nAfter each run, your overall DQ score updates to reflect the improvement.\n\nWant to activate this rule now?`;
       }
     }
 
