@@ -208,22 +208,26 @@
   background: var(--sf-blue-hover);
 }
 
+/* Page Header - matches Figma "All Assets" header with #F3F3F3 bg */
 .catalog-header {
-  padding: 1.5rem;
+  padding: 1rem 1.5rem;
+  background: var(--sf-gray-bg);
   border-bottom: 1px solid var(--sf-border);
 }
 
 .catalog-header h2 {
-  font-size: 1.5rem;
+  font-size: 28px;           /* font-scale-5 from Figma */
   font-weight: 400;
-  color: var(--sf-text);
-  margin: 0 0 0.5rem 0;
+  color: var(--sf-blue-dark); /* #001E5B - On-surface-3 */
+  margin: 0 0 0.25rem 0;
+  line-height: 35px;
 }
 
 .catalog-subtitle {
-  font-size: 0.875rem;
-  color: var(--sf-text-light);
+  font-size: 13px;
+  color: var(--sf-text-light); /* #5C5C5C */
   margin: 0;
+  line-height: 18px;
 }
 
 .catalog-controls {
@@ -281,23 +285,26 @@
 }
 
 .catalog-table th {
-  padding: 0.75rem 1rem;
+  padding: 0 1rem;
+  height: var(--sf-row-height);  /* 36px from Figma */
   text-align: left;
-  font-size: 0.75rem;
+  font-size: 11px;               /* font-scale-neg-1 */
   font-weight: 700;
-  color: var(--sf-text);
+  color: var(--sf-text-light);
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  white-space: nowrap;
 }
 
 .catalog-table tbody tr {
   border-bottom: 1px solid var(--sf-border);
   cursor: pointer;
-  transition: background 0.2s;
+  transition: background 0.15s;
+  height: var(--sf-row-height);  /* 36px from Figma */
 }
 
 .catalog-table tbody tr:hover {
-  background: var(--sf-gray-bg);
+  background: #EEF4FF;
 }
 
 .catalog-table tbody tr:last-child {
@@ -305,14 +312,17 @@
 }
 
 .catalog-table td {
-  padding: 1rem;
-  font-size: 0.875rem;
-  color: var(--sf-text);
+  padding: 0 1rem;
+  font-size: 13px;               /* font-scale-base */
+  color: var(--sf-text-light);
+  line-height: var(--sf-row-height);
+  white-space: nowrap;
 }
 
 .object-name strong {
-  color: var(--sf-blue);
-  font-weight: 600;
+  color: var(--sf-blue);        /* #0250D9 - Electric blue-40 */
+  font-weight: 590;
+  font-size: 13px;
 }
 
 .type-badge-plain {
@@ -381,16 +391,17 @@
 }
 
 .stat-value {
-  font-size: 1.75rem;
-  font-weight: 700;
-  color: var(--sf-blue);
-  margin-bottom: 0.5rem;
+  font-size: 28px;              /* font-scale-5 */
+  font-weight: 400;
+  color: var(--sf-blue-dark);   /* #001E5B */
+  margin-bottom: 0.25rem;
+  line-height: 35px;
 }
 
 .stat-label {
-  font-size: 0.7rem;
-  color: var(--sf-text-light);
-  font-weight: 600;
+  font-size: 11px;              /* font-scale-neg-1 */
+  color: var(--sf-text-light);  /* #5C5C5C */
+  font-weight: 590;
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
