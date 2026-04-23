@@ -107,6 +107,43 @@ function DQAssistant({ onClose, recommendations, catalogData }) {
       ).join('\n\n')}\n\nWould you like to activate any of these rules?`;
     }
 
+    // Example requests by number — "give example of 1", "show example 2", "example of rule 1"
+    const isExampleRequest =
+      lowerQ.includes('example') || lowerQ.includes('show me') ||
+      lowerQ.includes('what does') || lowerQ.includes('before') ||
+      lowerQ.includes('improvement') || lowerQ.includes('demo');
+
+    if (isExampleRequest) {
+      const numberMatch = lowerQ.match(/\b([1-3])\b/);
+      const ruleByName = recommendations.find(r =>
+        lowerQ.includes(r.name.toLowerCase()) ||
+        (lowerQ.includes('email') && r.name.toLowerCase().includes('email')) ||
+        (lowerQ.includes('null') && r.name.toLowerCase().includes('null')) ||
+        (lowerQ.includes('country') && r.name.toLowerCase().includes('country'))
+      );
+
+      const rule = ruleByName || (numberMatch ? recommendations[parseInt(numberMatch[1]) - 1] : null);
+
+      if (rule) {
+        const ruleName = rule.name.toLowerCase();
+        if (ruleName.includes('email')) {
+          return `**Email Format Validation — Before & After:**\n\n❌ john.doe@gmailcom → Flagged (missing dot)\n❌ sarah@@company.com → Flagged (double @)\n❌ mike.smith@domain → Flagged (no extension)\n✅ jane.doe@company.com → Passes\n\nInvalid emails are flagged for your team to review. Would you like to activate this rule?`;
+        } else if (ruleName.includes('null')) {
+          return `**Null Value Check — Before & After:**\n\n❌ Lead #1234: Email = (empty) → Flagged\n❌ Contact #5678: FirstName = (empty) → Flagged\n❌ Account #9012: BillingCountry = (empty) → Flagged\n✅ Lead #3456: All required fields filled → Passes\n\nFlagged records show in your DQ dashboard with the specific missing fields highlighted. Would you like to activate this rule?`;
+        } else if (ruleName.includes('country')) {
+          return `**Country Code Standardization — Before & After:**\n\n❌ "United States" → ✅ US\n❌ "USA" → ✅ US\n❌ "America" → ✅ US\n❌ "United Kingdom" → ✅ GB\n❌ "Deutschland" → ✅ DE\n\nAll country name variations standardized to 2-letter ISO codes — making filtering and reporting consistent across Lead, Contact, and Account. Would you like to activate this rule?`;
+        }
+      }
+
+      if (numberMatch && (parseInt(numberMatch[1]) < 1 || parseInt(numberMatch[1]) > recommendations.length)) {
+        return `I only have ${recommendations.length} recommendations right now. Try "give example of 1", "2", or "3".`;
+      }
+
+      if (!rule) {
+        return `Which rule would you like an example for?\n\n${recommendations.map((r, i) => `${i + 1}. ${r.name}`).join('\n')}\n\nSay "give example of 1" or "show example of country code".`;
+      }
+    }
+
     // Activation requests
     if (lowerQ.includes('activate') || lowerQ.includes('set up') || lowerQ.includes('enable') || lowerQ.includes('start')) {
       // Check for number-based selection (activate 1, activate 2, etc.)
