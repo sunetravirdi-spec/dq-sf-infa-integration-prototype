@@ -4,11 +4,11 @@ import './ObjectDetail.css';
 const mockProfilingData = {
   1: { // Lead object
     columns: [
-      { name: 'Email', nullPercent: 3, uniquePercent: 98, invalidCount: 165, totalRecords: 5500, dataType: 'Email', businessTerm: 'Contact Email', description: 'Primary email address for lead communication' },
-      { name: 'Country', nullPercent: 15, uniquePercent: 5, invalidCount: 825, totalRecords: 5500, dataType: 'String', businessTerm: 'Geographic Country', description: 'Country location of the lead' },
-      { name: 'Phone', nullPercent: 25, uniquePercent: 95, invalidCount: 193, totalRecords: 5500, dataType: 'Phone', businessTerm: 'Contact Phone', description: 'Primary contact phone number' },
-      { name: 'Company', nullPercent: 8, uniquePercent: 75, invalidCount: 44, totalRecords: 5500, dataType: 'String', businessTerm: 'Company Name', description: 'Name of the company or organization the lead works for' },
-      { name: 'Status', nullPercent: 2, uniquePercent: 8, invalidCount: 11, totalRecords: 5500, dataType: 'Picklist', businessTerm: 'Lead Status', description: 'Current stage in the lead lifecycle (New, Qualified, Converted, etc.)' },
+      { name: 'Email', nullPercent: 3, uniquePercent: 98, invalidCount: 165, totalRecords: 5500, dataType: 'Email', businessTerm: 'Contact Email', description: 'Primary email address for lead communication', dqScore: 74, dqIssue: 'Invalid format' },
+      { name: 'Country', nullPercent: 15, uniquePercent: 5, invalidCount: 825, totalRecords: 5500, dataType: 'String', businessTerm: 'Geographic Country', description: 'Country location of the lead', dqScore: 48, dqIssue: 'Inconsistent values' },
+      { name: 'Phone', nullPercent: 25, uniquePercent: 95, invalidCount: 193, totalRecords: 5500, dataType: 'Phone', businessTerm: 'Contact Phone', description: 'Primary contact phone number', dqScore: 62, dqIssue: 'High null rate' },
+      { name: 'Company', nullPercent: 8, uniquePercent: 75, invalidCount: 44, totalRecords: 5500, dataType: 'String', businessTerm: 'Company Name', description: 'Name of the company or organization the lead works for', dqScore: 88, dqIssue: null },
+      { name: 'Status', nullPercent: 2, uniquePercent: 8, invalidCount: 11, totalRecords: 5500, dataType: 'Picklist', businessTerm: 'Lead Status', description: 'Current stage in the lead lifecycle (New, Qualified, Converted, etc.)', dqScore: 96, dqIssue: null },
     ],
     recommendedRules: [
       {
@@ -39,11 +39,11 @@ const mockProfilingData = {
   },
   2: { // Contact object
     columns: [
-      { name: 'Email', nullPercent: 2, uniquePercent: 99, invalidCount: 60, totalRecords: 3000, dataType: 'Email', businessTerm: 'Contact Email', description: 'Email address for contact communication' },
-      { name: 'FirstName', nullPercent: 1, uniquePercent: 85, invalidCount: 5, totalRecords: 3000, dataType: 'String', businessTerm: 'Given Name', description: 'First or given name of the contact' },
-      { name: 'LastName', nullPercent: 1, uniquePercent: 90, invalidCount: 8, totalRecords: 3000, dataType: 'String', businessTerm: 'Family Name', description: 'Last or family name of the contact' },
-      { name: 'Phone', nullPercent: 18, uniquePercent: 96, invalidCount: 87, totalRecords: 3000, dataType: 'Phone', businessTerm: 'Contact Phone', description: 'Primary phone number for the contact' },
-      { name: 'MailingCountry', nullPercent: 12, uniquePercent: 6, invalidCount: 234, totalRecords: 3000, dataType: 'String', businessTerm: 'Mailing Country', description: 'Country for mailing address' },
+      { name: 'Email', nullPercent: 2, uniquePercent: 99, invalidCount: 60, totalRecords: 3000, dataType: 'Email', businessTerm: 'Contact Email', description: 'Email address for contact communication', dqScore: 82, dqIssue: 'Invalid format' },
+      { name: 'FirstName', nullPercent: 1, uniquePercent: 85, invalidCount: 5, totalRecords: 3000, dataType: 'String', businessTerm: 'Given Name', description: 'First or given name of the contact', dqScore: 97, dqIssue: null },
+      { name: 'LastName', nullPercent: 1, uniquePercent: 90, invalidCount: 8, totalRecords: 3000, dataType: 'String', businessTerm: 'Family Name', description: 'Last or family name of the contact', dqScore: 96, dqIssue: null },
+      { name: 'Phone', nullPercent: 18, uniquePercent: 96, invalidCount: 87, totalRecords: 3000, dataType: 'Phone', businessTerm: 'Contact Phone', description: 'Primary phone number for the contact', dqScore: 69, dqIssue: 'High null rate' },
+      { name: 'MailingCountry', nullPercent: 12, uniquePercent: 6, invalidCount: 234, totalRecords: 3000, dataType: 'String', businessTerm: 'Mailing Country', description: 'Country for mailing address', dqScore: 55, dqIssue: 'Inconsistent values' },
     ],
     recommendedRules: [
       {
@@ -66,12 +66,12 @@ const mockProfilingData = {
   },
   3: { // Account object
     columns: [
-      { name: 'Name', nullPercent: 0, uniquePercent: 100, invalidCount: 0, totalRecords: 1500, dataType: 'String', businessTerm: 'Organization Name', description: 'Official legal name of the organization or company' },
-      { name: 'Website', nullPercent: 22, uniquePercent: 98, invalidCount: 67, totalRecords: 1500, dataType: 'URL', businessTerm: 'Corporate Website', description: 'Primary website URL for the organization' },
-      { name: 'Industry', nullPercent: 8, uniquePercent: 15, invalidCount: 189, totalRecords: 1500, dataType: 'Picklist', businessTerm: 'Industry Classification', description: 'Business industry category or sector' },
-      { name: 'BillingCountry', nullPercent: 5, uniquePercent: 8, invalidCount: 98, totalRecords: 1500, dataType: 'String', businessTerm: 'Billing Country', description: 'Country for billing address and invoicing' },
-      { name: 'AnnualRevenue', nullPercent: 35, uniquePercent: 92, invalidCount: 23, totalRecords: 1500, dataType: 'Currency', businessTerm: 'Annual Revenue', description: 'Total annual revenue in USD' },
-      { name: 'Phone', nullPercent: 12, uniquePercent: 97, invalidCount: 45, totalRecords: 1500, dataType: 'Phone', businessTerm: 'Primary Phone Number', description: 'Main contact phone number for the organization' },
+      { name: 'Name', nullPercent: 0, uniquePercent: 100, invalidCount: 0, totalRecords: 1500, dataType: 'String', businessTerm: 'Organization Name', description: 'Official legal name of the organization or company', dqScore: 100, dqIssue: null },
+      { name: 'Website', nullPercent: 22, uniquePercent: 98, invalidCount: 67, totalRecords: 1500, dataType: 'URL', businessTerm: 'Corporate Website', description: 'Primary website URL for the organization', dqScore: 71, dqIssue: 'Inconsistent format' },
+      { name: 'Industry', nullPercent: 8, uniquePercent: 15, invalidCount: 189, totalRecords: 1500, dataType: 'Picklist', businessTerm: 'Industry Classification', description: 'Business industry category or sector', dqScore: 58, dqIssue: 'Non-standard values' },
+      { name: 'BillingCountry', nullPercent: 5, uniquePercent: 8, invalidCount: 98, totalRecords: 1500, dataType: 'String', businessTerm: 'Billing Country', description: 'Country for billing address and invoicing', dqScore: 76, dqIssue: 'Inconsistent codes' },
+      { name: 'AnnualRevenue', nullPercent: 35, uniquePercent: 92, invalidCount: 23, totalRecords: 1500, dataType: 'Currency', businessTerm: 'Annual Revenue', description: 'Total annual revenue in USD', dqScore: 63, dqIssue: 'High null rate' },
+      { name: 'Phone', nullPercent: 12, uniquePercent: 97, invalidCount: 45, totalRecords: 1500, dataType: 'Phone', businessTerm: 'Primary Phone Number', description: 'Main contact phone number for the organization', dqScore: 82, dqIssue: null },
     ],
     recommendedRules: [
       {
@@ -102,11 +102,11 @@ const mockProfilingData = {
   },
   4: { // Campaign object
     columns: [
-      { name: 'Name', nullPercent: 0, uniquePercent: 100, invalidCount: 0, totalRecords: 8200, dataType: 'String', businessTerm: 'Campaign Name', description: 'Name or title of the marketing campaign' },
-      { name: 'Status', nullPercent: 1, uniquePercent: 6, invalidCount: 45, totalRecords: 8200, dataType: 'Picklist', businessTerm: 'Campaign Status', description: 'Current status of the campaign (Planned, Active, Completed, etc.)' },
-      { name: 'StartDate', nullPercent: 3, uniquePercent: 88, invalidCount: 112, totalRecords: 8200, dataType: 'Date', businessTerm: 'Campaign Start Date', description: 'Date when the campaign begins' },
-      { name: 'EndDate', nullPercent: 15, uniquePercent: 85, invalidCount: 89, totalRecords: 8200, dataType: 'Date', businessTerm: 'Campaign End Date', description: 'Date when the campaign concludes' },
-      { name: 'Type', nullPercent: 8, uniquePercent: 12, invalidCount: 234, totalRecords: 8200, dataType: 'Picklist', businessTerm: 'Campaign Type', description: 'Type or category of campaign (Email, Webinar, Conference, etc.)' },
+      { name: 'Name', nullPercent: 0, uniquePercent: 100, invalidCount: 0, totalRecords: 8200, dataType: 'String', businessTerm: 'Campaign Name', description: 'Name or title of the marketing campaign', dqScore: 99, dqIssue: null },
+      { name: 'Status', nullPercent: 1, uniquePercent: 6, invalidCount: 45, totalRecords: 8200, dataType: 'Picklist', businessTerm: 'Campaign Status', description: 'Current status of the campaign (Planned, Active, Completed, etc.)', dqScore: 72, dqIssue: 'Null values' },
+      { name: 'StartDate', nullPercent: 3, uniquePercent: 88, invalidCount: 112, totalRecords: 8200, dataType: 'Date', businessTerm: 'Campaign Start Date', description: 'Date when the campaign begins', dqScore: 54, dqIssue: 'Invalid date range' },
+      { name: 'EndDate', nullPercent: 15, uniquePercent: 85, invalidCount: 89, totalRecords: 8200, dataType: 'Date', businessTerm: 'Campaign End Date', description: 'Date when the campaign concludes', dqScore: 61, dqIssue: 'High null rate' },
+      { name: 'Type', nullPercent: 8, uniquePercent: 12, invalidCount: 234, totalRecords: 8200, dataType: 'Picklist', businessTerm: 'Campaign Type', description: 'Type or category of campaign (Email, Webinar, Conference, etc.)', dqScore: 43, dqIssue: 'Non-standard values' },
     ],
     recommendedRules: [
       {
@@ -129,11 +129,11 @@ const mockProfilingData = {
   },
   5: { // Email_Engagement object
     columns: [
-      { name: 'EmailId', nullPercent: 0, uniquePercent: 100, invalidCount: 0, totalRecords: 12000, dataType: 'String', businessTerm: 'Email Identifier', description: 'Unique identifier for the email message' },
-      { name: 'RecipientEmail', nullPercent: 0, uniquePercent: 87, invalidCount: 34, totalRecords: 12000, dataType: 'Email', businessTerm: 'Recipient Email Address', description: 'Email address of the recipient' },
-      { name: 'OpenedDate', nullPercent: 42, uniquePercent: 95, invalidCount: 0, totalRecords: 12000, dataType: 'DateTime', businessTerm: 'Email Open Date', description: 'Date and time when the email was opened' },
-      { name: 'ClickedDate', nullPercent: 68, uniquePercent: 98, invalidCount: 0, totalRecords: 12000, dataType: 'DateTime', businessTerm: 'Link Click Date', description: 'Date and time when a link in the email was clicked' },
-      { name: 'Status', nullPercent: 1, uniquePercent: 5, invalidCount: 12, totalRecords: 12000, dataType: 'Picklist', businessTerm: 'Email Status', description: 'Status of the email (Sent, Opened, Clicked, Bounced, etc.)' },
+      { name: 'EmailId', nullPercent: 0, uniquePercent: 100, invalidCount: 0, totalRecords: 12000, dataType: 'String', businessTerm: 'Email Identifier', description: 'Unique identifier for the email message', dqScore: 100, dqIssue: null },
+      { name: 'RecipientEmail', nullPercent: 0, uniquePercent: 87, invalidCount: 34, totalRecords: 12000, dataType: 'Email', businessTerm: 'Recipient Email Address', description: 'Email address of the recipient', dqScore: 91, dqIssue: null },
+      { name: 'OpenedDate', nullPercent: 42, uniquePercent: 95, invalidCount: 0, totalRecords: 12000, dataType: 'DateTime', businessTerm: 'Email Open Date', description: 'Date and time when the email was opened', dqScore: 95, dqIssue: null },
+      { name: 'ClickedDate', nullPercent: 68, uniquePercent: 98, invalidCount: 0, totalRecords: 12000, dataType: 'DateTime', businessTerm: 'Link Click Date', description: 'Date and time when a link in the email was clicked', dqScore: 93, dqIssue: null },
+      { name: 'Status', nullPercent: 1, uniquePercent: 5, invalidCount: 12, totalRecords: 12000, dataType: 'Picklist', businessTerm: 'Email Status', description: 'Status of the email (Sent, Opened, Clicked, Bounced, etc.)', dqScore: 98, dqIssue: null },
     ],
     recommendedRules: [
       {
@@ -148,8 +148,41 @@ const mockProfilingData = {
   }
 };
 
+const dimensionScores = {
+  1: { completeness: 72, validity: 80, consistency: 61, uniqueness: 95, accuracy: 74 },
+  2: { completeness: 85, validity: 89, consistency: 78, uniqueness: 96, accuracy: 82 },
+  3: { completeness: 88, validity: 94, consistency: 87, uniqueness: 99, accuracy: 90 },
+  4: { completeness: 58, validity: 71, consistency: 64, uniqueness: 92, accuracy: 68 },
+  5: { completeness: 91, validity: 96, consistency: 94, uniqueness: 98, accuracy: 95 },
+};
+
+const dimensionLabels = {
+  completeness: 'Completeness',
+  validity: 'Validity',
+  consistency: 'Consistency',
+  uniqueness: 'Uniqueness',
+  accuracy: 'Accuracy',
+};
+
+function getObjectDataId(object) {
+  if (object.businessObject === 'Lead') return 1;
+  if (object.businessObject === 'Contact') return 2;
+  if (object.businessObject === 'Account') return 3;
+  if (object.businessObject === 'Campaign') return 4;
+  if (object.businessObject === 'Email_Engagement') return 5;
+  return null;
+}
+
+function getDimScoreClass(score) {
+  if (score >= 90) return 'dim-excellent';
+  if (score >= 75) return 'dim-good';
+  if (score >= 60) return 'dim-fair';
+  return 'dim-poor';
+}
+
 function ObjectDetail({ object, onBack, onApplyRule }) {
   const [activeTab, setActiveTab] = useState('summary');
+  const [bannerDismissed, setBannerDismissed] = useState(false);
 
   // Map business object to profiling data
   const getProfilingData = () => {
@@ -162,12 +195,14 @@ function ObjectDetail({ object, onBack, onApplyRule }) {
   };
 
   const profilingData = getProfilingData();
-
-  const getDQBadgeClass = (score) => {
-    if (score >= 90) return 'high';
-    if (score >= 70) return 'low';
-    return 'warning';
-  };
+  const dataId = getObjectDataId(object);
+  const dimScores = dataId ? dimensionScores[dataId] : null;
+  const worstDimensions = dimScores
+    ? Object.entries(dimScores)
+        .sort(([, a], [, b]) => a - b)
+        .slice(0, 2)
+        .filter(([, score]) => score < 85)
+    : [];
 
   const totalNullRecords = profilingData.columns.reduce((sum, col) =>
     sum + Math.round((col.nullPercent / 100) * col.totalRecords), 0
@@ -230,7 +265,52 @@ function ObjectDetail({ object, onBack, onApplyRule }) {
             <div className="meta-label">Last Modified By</div>
             <div className="meta-value">{object.owner}, {object.lastProfiled}</div>
           </div>
+          {object.dqScore !== null && (
+            <div className="meta-item">
+              <div className="meta-label">DQ Score</div>
+              <div className="meta-value">
+                <span className={`dq-header-score ${object.dqScore >= 90 ? 'score-excellent' : object.dqScore >= 70 ? 'score-good' : 'score-poor'}`}>
+                  {object.dqScore}%
+                </span>
+              </div>
+            </div>
+          )}
         </div>
+
+        {/* Agentforce recommendation banner */}
+        {!bannerDismissed && object.dqScore !== null && worstDimensions.length > 0 && (
+          <div className="agentforce-banner">
+            <div className="agentforce-banner-left">
+              <div className="agentforce-sparkle-icon">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <path d="M8 1L9.5 6H14.5L10.5 9L12 14L8 11L4 14L5.5 9L1.5 6H6.5L8 1Z" fill="#8B6FBC"/>
+                  <circle cx="12" cy="3" r="1.5" fill="#8B6FBC" opacity="0.6"/>
+                  <circle cx="14" cy="7" r="1" fill="#8B6FBC" opacity="0.4"/>
+                </svg>
+              </div>
+              <div className="agentforce-banner-body">
+                <span className="agentforce-banner-label">Agentforce Recommendation</span>
+                <span className="agentforce-banner-text">
+                  Focus on{' '}
+                  {worstDimensions.map(([dim], i) => (
+                    <span key={dim}>
+                      <strong>{dimensionLabels[dim]}</strong>
+                      {i < worstDimensions.length - 1 ? ' and ' : ''}
+                    </span>
+                  ))}
+                  {' '}to improve campaign targeting accuracy.{' '}
+                  <button
+                    className="agentforce-banner-action"
+                    onClick={() => { setActiveTab('dataQuality'); }}
+                  >
+                    View recommended rules →
+                  </button>
+                </span>
+              </div>
+            </div>
+            <button className="agentforce-banner-dismiss" onClick={() => setBannerDismissed(true)} title="Dismiss">✕</button>
+          </div>
+        )}
       </div>
 
       <div className="tabs">
@@ -288,6 +368,7 @@ function ObjectDetail({ object, onBack, onApplyRule }) {
                       <th>Data Type</th>
                       <th>Business Term</th>
                       <th>Description</th>
+                      <th>DQ Score</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -302,6 +383,32 @@ function ObjectDetail({ object, onBack, onApplyRule }) {
                           {!col.businessTerm && <span className="no-term">—</span>}
                         </td>
                         <td className="column-description">{col.description || '—'}</td>
+                        <td className="col-dq-cell">
+                          {col.dqScore != null ? (
+                            <div className="col-dq-wrapper">
+                              <div className="col-dq-bar-track">
+                                <div
+                                  className="col-dq-bar-fill"
+                                  style={{
+                                    width: `${col.dqScore}%`,
+                                    background: col.dqScore >= 90 ? '#2E844A' : col.dqScore >= 70 ? '#FFB75D' : '#EA001E',
+                                  }}
+                                />
+                              </div>
+                              <span
+                                className="col-dq-score"
+                                style={{
+                                  color: col.dqScore >= 90 ? '#2E844A' : col.dqScore >= 70 ? '#B86403' : '#C23934',
+                                }}
+                              >
+                                {col.dqScore}%
+                              </span>
+                              {col.dqIssue && (
+                                <span className="col-dq-issue" title={col.dqIssue}>⚠</span>
+                              )}
+                            </div>
+                          ) : <span className="no-term">—</span>}
+                        </td>
                       </tr>
                     ))}
                   </tbody>
@@ -422,6 +529,24 @@ function ObjectDetail({ object, onBack, onApplyRule }) {
                 <div className="stat-value">{object.dqScore}%</div>
               </div>
             </div>
+
+            {/* DQ Dimension Scores */}
+            {dimScores && (
+              <div className="dimension-scores-section">
+                <h4 className="dimension-scores-title">DQ Score by Dimension</h4>
+                <div className="dimension-scores-grid">
+                  {Object.entries(dimScores).map(([dim, score]) => (
+                    <div key={dim} className={`dimension-card ${getDimScoreClass(score)}`}>
+                      <div className="dimension-score-value">{score}%</div>
+                      <div className="dimension-score-bar-track">
+                        <div className="dimension-score-bar-fill" style={{ width: `${score}%` }} />
+                      </div>
+                      <div className="dimension-score-label">{dimensionLabels[dim]}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
 
             <div className="profiling-table-container">
               <table className="profiling-table">

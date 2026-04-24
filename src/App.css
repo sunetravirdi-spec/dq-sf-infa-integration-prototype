@@ -1,264 +1,232 @@
-/* Salesforce Design System Colors - aligned to Figma 262-264 Salesforce Catalog */
 :root {
-  --sf-blue: #0250D9;           /* Electric blue-40 (accent/links) */
+  --sf-blue: #0250D9;
   --sf-blue-hover: #0139A0;
-  --sf-blue-dark: #001E5B;      /* On-surface-3 (page titles) */
-  --sf-blue-navy: #03234D;      /* Surface-container/Blue-15 */
+  --sf-navy: #03234D;
   --sf-purple: #8B6FBC;
   --sf-border: #DDDBDA;
-  --sf-gray-bg: #F3F3F3;        /* Surface/2 neutral-95 */
+  --sf-gray-bg: #F3F3F3;
   --sf-text: #181818;
-  --sf-text-light: #5C5C5C;     /* On-surface-1 (body/labels) */
+  --sf-text-light: #5C5C5C;
   --sf-white: #FFFFFF;
   --sf-success: #2E844A;
-  --sf-warning: #FFB75D;
-  --sf-error: #EA001E;
-  --sf-font: 'SF Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --sf-font-size-title: 28px;   /* font-scale-5 */
-  --sf-font-size-body: 13px;    /* font-scale-base */
-  --sf-font-size-small: 11px;   /* font-scale-neg-1 */
-  --sf-line-height-title: 35px;
-  --sf-line-height-body: 18px;
-  --sf-row-height: 36px;
-  --sf-nav-width: 220px;
-  --sf-global-nav-height: 104px;
+  --sf-warning: #B86403;
+  --sf-error: #C23934;
+  --sf-font: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--sf-font);
+  font-size: 13px;
+  color: var(--sf-text);
+  background: var(--sf-gray-bg);
 }
 
 .App {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background: var(--sf-gray-bg);
-  font-family: var(--sf-font);
-  font-size: var(--sf-font-size-body);
-  color: var(--sf-text-light);
 }
 
-/* Global Navigation - matches Figma 104px height */
-.app-header {
-  background: var(--sf-blue-navy);
-  border-bottom: none;
-  padding: 0;
-  height: var(--sf-global-nav-height);
-  display: flex;
-  align-items: center;
+/* ── Global Nav ─────────────────────────────────────────────── */
+.global-nav {
+  background: var(--sf-navy);
+  height: 56px;
   flex-shrink: 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.25);
 }
 
-.header-content {
+.global-nav-inner {
+  height: 100%;
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  padding: 0 1.5rem;
-  height: 100%;
-}
-
-.header-left {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-}
-
-.app-logo {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 14px;
-  color: var(--sf-white);
-  font-weight: 600;
-}
-
-.app-header h1 {
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--sf-white);
-}
-
-.header-nav {
-  display: flex;
-  gap: 0;
-  height: 100%;
-}
-
-.nav-tab {
-  padding: 0 1.25rem;
-  background: none;
-  border: none;
-  border-bottom: 3px solid transparent;
-  color: rgba(255,255,255,0.75);
-  font-size: 13px;
-  font-weight: 590;
-  cursor: pointer;
-  transition: all 0.2s;
-  height: 100%;
-}
-
-.nav-tab.active {
-  color: var(--sf-white);
-  border-bottom-color: var(--sf-white);
-}
-
-.nav-tab:hover {
-  color: var(--sf-white);
-  background: rgba(255,255,255,0.08);
-}
-
-.user-info {
-  display: flex;
-  align-items: center;
+  padding: 0 1rem;
   gap: 1rem;
 }
 
-.user-avatar {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background: var(--sf-purple);
+.global-nav-left {
   display: flex;
   align-items: center;
-  justify-content: center;
-  color: white;
-  font-weight: 600;
-  font-size: 13px;
-}
-
-.app-main {
-  flex: 1;
-  display: flex;
-  width: 100%;
+  height: 100%;
+  gap: 0.75rem;
   overflow: hidden;
 }
 
-/* Left Navigation Panel - matches Figma 220px */
-.sidebar {
-  width: var(--sf-nav-width);
-  background: var(--sf-white);
-  border-right: 1px solid var(--sf-border);
-  padding: 1rem 0;
+.sf-logo {
+  display: flex;
+  align-items: center;
   flex-shrink: 0;
 }
 
-.sidebar-title {
-  padding: 0.5rem 1rem;
-  font-size: 11px;
+.app-name {
+  font-size: 0.875rem;
   font-weight: 700;
-  color: var(--sf-text-light);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  margin-bottom: 0.25rem;
+  color: #fff;
+  white-space: nowrap;
+  flex-shrink: 0;
+  margin-right: 0.25rem;
 }
 
-.sidebar-menu {
-  list-style: none;
-}
-
-.sidebar-item {
-  padding: 0.625rem 1rem;
-  color: var(--sf-text-light);
-  font-size: 13px;
-  cursor: pointer;
-  transition: background 0.15s;
-  line-height: var(--sf-row-height);
-  height: var(--sf-row-height);
+/* Top nav tabs */
+.top-nav {
   display: flex;
   align-items: center;
+  height: 100%;
+  overflow-x: auto;
+  scrollbar-width: none;
 }
 
-.sidebar-item:hover {
-  background: var(--sf-gray-bg);
+.top-nav::-webkit-scrollbar { display: none; }
+
+.top-nav-tab {
+  height: 100%;
+  padding: 0 0.75rem;
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  color: rgba(255,255,255,0.72);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  transition: color 0.15s, border-color 0.15s;
 }
 
-.sidebar-item.active {
-  background: #E8F4FF;
-  color: var(--sf-blue);
-  font-weight: 590;
-  border-left: 3px solid var(--sf-blue);
-  padding-left: calc(1rem - 3px);
+.top-nav-tab:hover {
+  color: #fff;
+  background: rgba(255,255,255,0.08);
 }
 
-.content-area {
-  flex: 1;
-  overflow-y: auto;
+.top-nav-tab.active {
+  color: #fff;
+  border-bottom-color: #fff;
+  font-weight: 600;
 }
 
-/* DQ Score Badge - Salesforce style */
-.dq-badge {
-  display: inline-flex;
+.nav-chevron {
+  font-size: 0.625rem;
+  opacity: 0.7;
+}
+
+/* Right side */
+.global-nav-right {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+
+.nav-search {
+  display: flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.25rem 0.75rem;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.25);
   border-radius: 4px;
-  font-weight: 600;
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+  padding: 0.3125rem 0.75rem;
+  color: rgba(255,255,255,0.8);
+  font-size: 0.8125rem;
+  min-width: 220px;
 }
 
-.dq-badge.high {
-  background: #E3F3E5;
-  color: var(--sf-success);
+.nav-search input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: rgba(255,255,255,0.9);
+  font-size: 0.8125rem;
+  width: 100%;
 }
 
-.dq-badge.low {
-  background: #FFF4E0;
-  color: #B86403;
-}
+.nav-search input::placeholder { color: rgba(255,255,255,0.55); }
 
-.dq-badge.warning {
-  background: #FEF0E6;
-  color: #B86403;
-}
-
-/* Buttons - Salesforce style */
-.btn {
-  padding: 0.5rem 1rem;
-  border: 1px solid transparent;
+.ask-btn {
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.35);
+  color: #fff;
   border-radius: 4px;
-  font-size: 0.875rem;
+  padding: 0.3125rem 0.875rem;
+  font-size: 0.8125rem;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.2s;
+}
+
+.ask-btn:hover { background: rgba(255,255,255,0.22); }
+
+.nav-icons {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  color: rgba(255,255,255,0.75);
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.nav-icons span:hover { color: #fff; }
+
+.user-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--sf-purple);
+  color: #fff;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+/* ── App body ────────────────────────────────────────────────── */
+.app-body {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Shared buttons ─────────────────────────────────────────── */
+.btn {
+  padding: 0.4375rem 0.875rem;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
 }
 
 .btn-primary {
   background: var(--sf-blue);
-  color: white;
+  color: #fff;
   border-color: var(--sf-blue);
 }
 
-.btn-primary:hover {
-  background: var(--sf-blue-hover);
-  border-color: var(--sf-blue-hover);
-}
+.btn-primary:hover { background: var(--sf-blue-hover); border-color: var(--sf-blue-hover); }
 
 .btn-secondary {
-  background: white;
+  background: #fff;
   color: var(--sf-blue);
   border-color: var(--sf-border);
 }
 
-.btn-secondary:hover {
-  background: var(--sf-gray-bg);
-}
+.btn-secondary:hover { background: var(--sf-gray-bg); }
 
 .btn-setup {
   background: var(--sf-blue);
-  color: white;
-  padding: 0.625rem 1.25rem;
-  font-size: 0.875rem;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  font-size: 0.8125rem;
 }
 
-.btn-setup:hover {
-  background: var(--sf-blue-hover);
-}
-
-/* Loading */
-.loading {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 400px;
-  font-size: 1.25rem;
-  color: var(--sf-text-light);
-}
+.btn-setup:hover { background: var(--sf-blue-hover); }

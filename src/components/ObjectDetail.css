@@ -1,4 +1,188 @@
-/* Salesforce Catalog Object Detail Styling */
+/* ── Agentforce Banner ─────────────────────────────────────────── */
+.agentforce-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1.25rem;
+  padding: 0.875rem 1rem;
+  background: linear-gradient(135deg, #F5F0FF 0%, #EEF4FF 100%);
+  border: 1px solid #C9B8F5;
+  border-left: 4px solid #8B6FBC;
+  border-radius: 6px;
+  gap: 1rem;
+}
+
+.agentforce-banner-left {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  flex: 1;
+}
+
+.agentforce-sparkle-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  background: #EDE4FF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.agentforce-banner-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.agentforce-banner-label {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: #6B4EAA;
+}
+
+.agentforce-banner-text {
+  font-size: 0.875rem;
+  color: var(--sf-text);
+  line-height: 1.5;
+}
+
+.agentforce-banner-action {
+  background: none;
+  border: none;
+  color: #0250D9;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.agentforce-banner-action:hover {
+  color: #0139A0;
+}
+
+.agentforce-banner-dismiss {
+  background: none;
+  border: none;
+  color: var(--sf-text-light);
+  font-size: 0.875rem;
+  cursor: pointer;
+  padding: 0.25rem;
+  flex-shrink: 0;
+  line-height: 1;
+  border-radius: 3px;
+}
+
+.agentforce-banner-dismiss:hover {
+  background: rgba(0,0,0,0.06);
+}
+
+/* ── DQ Header Score Badge ────────────────────────────────────── */
+.dq-header-score {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+.dq-header-score.score-excellent {
+  background: #E3F3E5;
+  color: #2E844A;
+}
+
+.dq-header-score.score-good {
+  background: #FFF4E0;
+  color: #B86403;
+}
+
+.dq-header-score.score-poor {
+  background: #FEECEC;
+  color: #C23934;
+}
+
+/* ── DQ Dimension Score Cards ─────────────────────────────────── */
+.dimension-scores-section {
+  margin-bottom: 2rem;
+}
+
+.dimension-scores-title {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--sf-text);
+  margin: 0 0 0.875rem 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.dimension-scores-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.875rem;
+}
+
+.dimension-card {
+  background: var(--sf-white);
+  border: 1px solid var(--sf-border);
+  border-radius: 6px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  border-top: 3px solid transparent;
+}
+
+.dimension-card.dim-excellent { border-top-color: #2E844A; }
+.dimension-card.dim-good      { border-top-color: #4BAADD; }
+.dimension-card.dim-fair      { border-top-color: #FFB75D; }
+.dimension-card.dim-poor      { border-top-color: #EA001E; }
+
+.dimension-score-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--sf-text);
+  line-height: 1;
+}
+
+.dimension-card.dim-excellent .dimension-score-value { color: #2E844A; }
+.dimension-card.dim-good      .dimension-score-value { color: #107CAD; }
+.dimension-card.dim-fair      .dimension-score-value { color: #B86403; }
+.dimension-card.dim-poor      .dimension-score-value { color: #C23934; }
+
+.dimension-score-bar-track {
+  width: 100%;
+  height: 4px;
+  background: #EBEBEB;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.dimension-score-bar-fill {
+  height: 100%;
+  border-radius: 2px;
+  transition: width 0.6s ease;
+}
+
+.dimension-card.dim-excellent .dimension-score-bar-fill { background: #2E844A; }
+.dimension-card.dim-good      .dimension-score-bar-fill { background: #4BAADD; }
+.dimension-card.dim-fair      .dimension-score-bar-fill { background: #FFB75D; }
+.dimension-card.dim-poor      .dimension-score-bar-fill { background: #EA001E; }
+
+.dimension-score-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--sf-text-light);
+  text-align: center;
+}
+
+/* ── Salesforce Catalog Object Detail Styling ─────────────────── */
 
 .object-detail {
   background: var(--sf-white);
@@ -464,6 +648,47 @@
   color: var(--sf-text-light);
   line-height: 1.5;
   max-width: 400px;
+}
+
+/* ── Field-level DQ Score cell ────────────────────────────── */
+.col-dq-cell {
+  min-width: 140px;
+  white-space: nowrap;
+}
+
+.col-dq-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.col-dq-bar-track {
+  width: 64px;
+  height: 5px;
+  background: #E8E8E8;
+  border-radius: 3px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.col-dq-bar-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.5s ease;
+}
+
+.col-dq-score {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  min-width: 34px;
+}
+
+.col-dq-issue {
+  font-size: 0.75rem;
+  color: #B86403;
+  cursor: default;
+  flex-shrink: 0;
 }
 
 .definition-section h3 {
