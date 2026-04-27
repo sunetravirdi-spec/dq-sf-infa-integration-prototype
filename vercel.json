@@ -1,1 +1,5 @@
-{"version":2,"name":"dq-sf-infa-prototype","builds":[{"src":"package.json","use":"@vercel/static-build","config":{"distDir":"build"}}],"routes":[{"src":"/(.*)", "dest":"/index.html"}]}
+{
+  "buildCommand": "CI=false npm run build",
+  "outputDirectory": "build",
+  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
+}
