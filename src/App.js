@@ -36,7 +36,7 @@ function App() {
                 <button
                   key={tab}
                   className={`top-nav-tab ${activeNav === tab ? 'active' : ''}`}
-                  onClick={() => { setActiveNav(tab); setSelectedObject(null); if (tab === 'Agent') setAgentOpen(true); }}
+                  onClick={() => { setActiveNav(tab); setSelectedObject(null); if (tab === 'Agent') setAgentOpen(false); }}
                 >
                   {tab}
                   {['Data Streams','Segments','Activations','Activation Targets','Data Model','Data Lake Objects','Data Transforms','Calculated Insights','Search Indexes','More'].includes(tab) && (
@@ -52,16 +52,18 @@ function App() {
               <input placeholder="Search or ask anything…" readOnly />
             </div>
             <button className="ask-btn">Ask</button>
-            <button
-              className={`agent-nav-btn ${agentOpen ? 'active' : ''}`}
-              onClick={() => setAgentOpen(o => !o)}
-              title="Data Cloud Agent"
-            >
-              <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
-                <path d="M8 1L9.5 6H14.5L10.5 9L12 14L8 11L4 14L5.5 9L1.5 6H6.5L8 1Z" fill="white"/>
-                <circle cx="12" cy="3" r="1.5" fill="white" opacity="0.7"/>
-              </svg>
-            </button>
+            {activeNav !== 'Agent' && (
+              <button
+                className={`agent-nav-btn ${agentOpen ? 'active' : ''}`}
+                onClick={() => setAgentOpen(o => !o)}
+                title="Data Cloud Agent"
+              >
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+                  <path d="M8 1L9.5 6H14.5L10.5 9L12 14L8 11L4 14L5.5 9L1.5 6H6.5L8 1Z" fill="white"/>
+                  <circle cx="12" cy="3" r="1.5" fill="white" opacity="0.7"/>
+                </svg>
+              </button>
+            )}
             <div className="nav-icons">
               <span title="Setup">⚙</span>
               <span title="Help">?</span>
@@ -92,7 +94,7 @@ function App() {
             <span>This tab is not part of the DQ prototype.</span>
           </div>
         )}
-        <AgentPanel open={agentOpen} onClose={() => setAgentOpen(false)} />
+        {activeNav !== 'Agent' && <AgentPanel open={agentOpen} onClose={() => setAgentOpen(false)} />}
       </main>
 
       {chatRule && (

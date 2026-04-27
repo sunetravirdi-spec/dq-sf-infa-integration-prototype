@@ -310,7 +310,13 @@ W4      92% ↑     65% ↑     78% ↑
 const SPARKLE_SVG = (
   <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
     <path d="M8 1L9.5 6H14.5L10.5 9L12 14L8 11L4 14L5.5 9L1.5 6H6.5L8 1Z" fill="white"/>
-    <circle cx="12" cy="3" r="1.5" fill="white" opacity="0.6"/>
+    <circle cx="12" cy="3" r="1.5" fill="white" opacity="0.7"/>
+  </svg>
+);
+const SPARKLE_SVG_DARK = (
+  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+    <path d="M8 1L9.5 6H14.5L10.5 9L12 14L8 11L4 14L5.5 9L1.5 6H6.5L8 1Z" fill="#8B6FBC"/>
+    <circle cx="12" cy="3" r="1.5" fill="#8B6FBC" opacity="0.6"/>
   </svg>
 );
 
@@ -472,7 +478,7 @@ export function AgentPage() {
       <div className="agent-sidebar">
         <div className="agent-sidebar-header">
           <div className="agent-sidebar-logo">
-            <div className="agent-sidebar-logo-icon">{SPARKLE_SVG}</div>
+            <div className="agent-sidebar-logo-icon">{SPARKLE_SVG_DARK}</div>
             <div>
               <div className="agent-sidebar-logo-text">Data Cloud Agent</div>
               <div className="agent-sidebar-logo-sub">Powered by Agentforce</div>
@@ -501,7 +507,7 @@ export function AgentPage() {
             if (msg.response?.type === 'greeting') {
               return (
                 <div key={msg.id} className="msg-row agent">
-                  <div className="msg-avatar">{SPARKLE_SVG}</div>
+                  <div className="msg-avatar">{SPARKLE_SVG_DARK}</div>
                   <div className="msg-bubble">
                     <p style={{margin:'0 0 0.375rem 0'}}>Hi! I'm your <strong>Data Cloud Agent</strong>.</p>
                     <p style={{margin:'0 0 0.25rem 0'}}>I can help you:</p>
@@ -509,14 +515,14 @@ export function AgentPage() {
                     <p style={{margin:'0.1rem 0'}}>• Add DQ rules and fix failing fields</p>
                     <p style={{margin:'0.1rem 0'}}>• Create DQ-gated Calculated Insights</p>
                     <p style={{margin:'0.1rem 0'}}>• Notify your marketing analyst</p>
-                    <p style={{margin:'0.375rem 0 0',color:'#C9B8F5',fontSize:'0.8125rem'}}>Pick a suggestion below or type your question.</p>
+                    <p style={{margin:'0.375rem 0 0',color:'#6B4EAA',fontSize:'0.8125rem'}}>Pick a suggestion below or type your question.</p>
                   </div>
                 </div>
               );
             }
             return (
               <div key={msg.id} className={`msg-row ${msg.from}`}>
-                {msg.from === 'agent' && <div className="msg-avatar">{SPARKLE_SVG}</div>}
+                {msg.from === 'agent' && <div className="msg-avatar">{SPARKLE_SVG_DARK}</div>}
                 <div className="msg-bubble">
                   {msg.from === 'agent' ? renderMessage(msg, sendMessage) : msg.text}
                 </div>
@@ -525,7 +531,7 @@ export function AgentPage() {
           })}
           {typing && (
             <div className="msg-row agent">
-              <div className="msg-avatar">{SPARKLE_SVG}</div>
+              <div className="msg-avatar">{SPARKLE_SVG_DARK}</div>
               <div className="msg-bubble"><div className="typing-bubble"><span/><span/><span/></div></div>
             </div>
           )}
