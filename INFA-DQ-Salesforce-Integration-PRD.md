@@ -56,12 +56,97 @@ Surface existing Informatica profiling results and DQ scores inside D360 Catalog
 
 Expand to D360 customers with no Informatica experience. 1-click setup agent handles connection; users never touch IDMC.
 
-**Capabilities:**
-- **Auto Profiling:** Nightly batch profiling for all DMOs and DLOs (10K row sample); results in Catalog within 24 hours; no setup required
-- **AI Recommendations:** Top 3 prioritized DQ rule recommendations per object in Catalog sidebar, generated from profiling results; plain English with impact count (e.g., "1,200 Lead records have invalid email addresses")
-- **One-Click Rule Scheduling:** Analyst clicks [Set Up Rule] → AI chat opens pre-loaded with rule context → analyst confirms → rule is scheduled in Informatica DQ; no rule engine knowledge required
-- **Conversational DQ Assistant:** Floating assistant accessible from anywhere in Catalog; handles "what needs attention?", "activate 1", "show DQ scores", cross-asset questions; conversational context within session
-- **Post-Rule Score Visibility:** Updated DQ scores and dimension breakdowns refresh in Catalog after each rule run; per-DMO score table with failed record counts
+#### Capability 1: Automatic Profiling for All DMOs and DLOs
+
+Profiling runs automatically for every DMO and DLO in D360 — no setup required.
+
+- **Trigger:** Nightly batch job; also runs on DMO/DLO creation or refresh
+- **Scope:** 100% of DMOs and DLOs in the customer's D360 org
+- **Sample size:** 10K rows per object (configurable)
+- **Output:** Profiling stats visible in Catalog within 24 hours
+- **Stats surfaced:** Null %, Unique %, Invalid record count, Total records — per column
+
+**"I Can" Statements:**
+- I can view profiling stats for all my DMOs and DLOs in the Catalog without configuring anything
+- I can see which columns have null values, invalid formats, and low uniqueness
+
+#### Capability 2: AI-Powered DQ Recommendations (No Rule Engine Knowledge)
+
+The system reads profiling results and generates plain-English DQ recommendations surfaced directly in the Catalog.
+
+**How recommendations are generated:**
+- High null % on required fields → "Null Value Check" rule recommended
+- Invalid email/phone patterns → "Email Format Validation" or "Phone Format Validation"
+- Inconsistent country/region values → "Country Code Standardization"
+- Low uniqueness on ID fields → "Duplicate Detection"
+
+**How they are displayed:**
+- Top 3 prioritized recommendations always visible in Catalog sidebar
+- Each card shows: priority badge, plain-English description, affected DMOs/DLOs, number of impacted records
+- Expandable to see "What this rule does" — no jargon, examples included
+- Refreshed after each profiling run
+
+**"I Can" Statements:**
+- I can see AI-recommended DQ rules based on my profiling data, ranked by business impact
+- I can understand what each rule checks in plain English before I activate it
+
+#### Capability 3: One-Click Rule Scheduling (Zero Rule Engine Knowledge)
+
+The analyst activates rules through Catalog — the system handles all Informatica DQ configuration behind the scenes.
+
+**Entry points:**
+1. **Catalog sidebar** — [Set Up Rule] on any recommendation card
+2. **Asset detail page** — Data Quality tab shows per-object recommendations with [Set Up Rule]
+3. **DQ Assistant chat** — "Activate rule 1" or "Set up email validation"
+
+**Experience flow:**
+1. Analyst clicks [Set Up Rule] → Conversational chat opens pre-loaded with rule context
+2. Analyst can ask questions: "What will this fix?" "Which fields?" "How often does it run?"
+3. Analyst confirms: clicks button or types "yes" / "activate" / "go ahead"
+4. Rule is scheduled in Informatica DQ — analyst never sees the rule engine
+
+**What is hidden from the analyst:** Informatica DQ rule syntax, asset connection setup, technical rule parameters
+
+**What the analyst sees:**
+- Business impact: "1,850 Lead records have invalid email addresses"
+- Plain English: "This rule checks if emails follow the format name@domain.com"
+- Schedule confirmation: "Will run daily at 2:00 AM, email summary after each run"
+
+**"I Can" Statements:**
+- I can schedule a DQ rule in one click from the Catalog without knowing Informatica DQ
+- I can confirm what a rule will do before activating it through a conversational chat
+
+#### Capability 4: Conversational DQ Assistant
+
+Two AI chat experiences available in the Catalog.
+
+**A. Contextual Rule Setup Chat** — opens per rule
+- Pre-loaded with that rule's context
+- Answers: "What does this rule check?", "Which columns?", "What if I have questions after it runs?"
+- Two-step confirmation before activation
+
+**B. General DQ Assistant** (floating 🤖, always accessible)
+- Handles any DQ question across all DMOs/DLOs
+- Natural language: "Show me all pending rules", "Activate rule 1", "What needs attention?", "Which DMOs have low scores?"
+- Number-based commands: "activate 1" maps to top recommendation
+- Conversational context: remembers pending activation within session
+
+**"I Can" Statements:**
+- I can ask any question about my data quality and get a plain-English answer
+- I can activate rules conversationally without navigating through settings
+
+#### Capability 5: DQ Score Visibility After Rules Run
+
+Once rules execute, updated scores appear throughout the Catalog.
+
+- **Catalog list view:** Color-coded DQ score badge per DMO/DLO (Green 90–100%, Yellow/Orange 70–89%, Red <70%)
+- **Asset detail page — Data Quality tab:** Overall DQ score; score by dimension (Completeness, Accuracy, Consistency, Validity, Uniqueness); column-level breakdown with failed record counts
+- **Profiling tab:** Column-level stats (Null %, Unique %, Invalid count)
+
+**"I Can" Statements:**
+- I can view updated DQ scores in the Catalog after rules run
+- I can see which dimensions are failing and by how much
+- I can drill into a specific DMO to see which columns are causing quality issues
 
 ---
 
